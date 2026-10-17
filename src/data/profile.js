@@ -1,0 +1,105 @@
+export const profileData = {
+  name: 'Shivanand Patil',
+  role: 'Full-Stack Developer',
+  tagline:
+    'Building responsive, high-performance web & mobile applications with React.js, Next.js, Angular, React Native, and Node.js.',
+  location: 'Bangalore, India',
+  phone: '+91 9980875981',
+  email: 'shivanandpatil55550@gmail.com',
+  experienceYears: '1.5+ Years',
+  resumeUrl: '/assets/ShivanandPatil-Resume.pdf',
+  socials: {
+    linkedin: 'https://www.linkedin.com/in/shivanand-patil-fullstack/?isSelfProfile=true',
+    github: 'https://github.com/shivanand43',
+  },
+  summary:
+    'Full-Stack Developer with 1.5+ years of experience building responsive, high-performance web applications with React.js, Next.js, and Angular. Experienced in integrating REST APIs with JWT authentication, managing application state with Redux Toolkit and Zustand, and optimizing speed and performance, with version control in Git and GitHub. Delivers user-focused product features in Agile teams across healthcare and real estate platforms.',
+
+  skills: {
+    frontend: [
+      'React.js',
+      'Next.js',
+      'Angular',
+      'TypeScript',
+      'JavaScript (ES6+)',
+      'HTML5',
+      'CSS3 / CSS Modules',
+      'Tailwind CSS',
+      'PrimeNG',
+      'Responsive Design',
+    ],
+    stateManagement: ['Redux Toolkit', 'Zustand', 'Context API', 'RxJS'],
+    apiIntegration: ['REST APIs', 'Axios', 'JWT Authentication', 'Postman'],
+    mobile: ['React Native', 'Ionic', 'Capacitor', 'Expo', 'Expo Router'],
+    backendCloudAi: [
+      'Node.js',
+      'Express.js',
+      'MongoDB Atlas',
+      'SQL',
+      'AWS (S3)',
+      'Render',
+      'Google Gemini LLM',
+      'Prompt Engineering',
+    ],
+    performanceTools: [
+      'Google Lighthouse (95+)',
+      'Git & GitHub',
+      'Vite',
+      'CI/CD',
+      'Vercel',
+      'Figma',
+      'Chrome Extensions (Manifest V3)',
+    ],
+  },
+
+  experience: [
+    {
+      id: 'exp-relvix',
+      role: 'Frontend Developer',
+      company: 'Relvix Node-bit Pvt Ltd',
+      period: 'July 2026 – Present',
+      location: 'Bangalore, India',
+      projectTitle: 'ABDM & HIMS Healthcare Platform',
+      techStack: ['Angular', 'Ionic', 'Capacitor', 'PrimeNG', 'Spring Boot', 'SQL'],
+      highlights: [
+        'Architected a unified clinical application, eliminating redundant multi-platform development cycles, by deploying one Angular, Ionic, and Capacitor codebase across web and native medical devices.',
+        'Achieved national compliance for secure patient health data and EHR interoperability, by integrating the ABDM connector with REST APIs on a Spring Boot backend.',
+        'Streamlined real-time patient admission and billing workflows for medical staff, by engineering high-performance PrimeNG UI modules.',
+      ],
+    },
+    {
+      id: 'exp-interioverse-web',
+      role: 'Software Developer',
+      company: 'Interioverse Design Pvt Ltd',
+      period: 'February 2025 – July 2026',
+      location: 'Bangalore, India',
+      projectTitle: 'Real Estate Management Platform & Project Management Mobile App',
+      techStack: [
+        'Next.js',
+        'React.js',
+        'React Native',
+        'Redux Toolkit',
+        'JWT',
+        'REST APIs',
+        'AWS S3',
+        'Recharts',
+      ],
+      highlights: [
+        'Engineered a scalable Next.js and React.js management system providing real-time data visibility, by centralizing platform operations in reusable frontend modules.',
+        'Secured subscriptions, designer profiles, and dynamic city-wise pricing, by integrating REST APIs with JWT authentication and role-based access.',
+        'Accelerated quotation generation for designers, by building a 3D asset and template catalog module integrated with AWS S3 that replaced manual workflows.',
+        'Delivered actionable insights for administrative decisions, by developing interactive Recharts dashboards tracking weekly and monthly growth and project activity.',
+        'Reduced mobile development time by ~30% across Android and iOS, by building a scalable React Native Project Management application with Redux Toolkit, OTPAuth, and real-time percentage-based progress tracking.',
+      ],
+    },
+  ],
+
+  education: [
+    {
+      id: 'edu-be',
+      degree: 'Bachelor of Engineering in Electronics & Communication (ECE)',
+      institution: 'Visvesvaraya Technological University, Belagavi — Govt. Engineering College, Haveri',
+      period: '2021 – 2025',
+    },
+  ],
+};

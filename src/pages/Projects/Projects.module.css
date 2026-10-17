@@ -1,0 +1,66 @@
+.projectsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.headerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pageTitle {
+  font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+}
+
+.pageSubtitle {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+}
+
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.tabBtn {
+  padding: 0.5rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: rgba(30, 41, 59, 0.6);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabBtn:hover,
+.activeTab {
+  background: var(--accent-gradient);
+  color: #fff;
+  border-color: transparent;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media screen and (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
