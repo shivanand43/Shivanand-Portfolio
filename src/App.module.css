@@ -48,14 +48,14 @@ body {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: calc(var(--header-height) + 2rem) 1.5rem 4rem;
+  padding: calc(var(--header-height) + 1rem) 1.5rem 1rem;
 }
 
 /* Tablet Screens (Windows Snap / iPad) */
 @media screen and (max-width: 1024px) {
   .mainContent {
     max-width: 960px;
-    padding: calc(var(--header-height) + 1.5rem) 1.25rem 3rem;
+    padding: calc(var(--header-height) + 1.5rem) 1.25rem 2rem;
   }
 }
 
