@@ -58,6 +58,14 @@
   transform: translateY(-2px);
 }
 
+.socialIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 @media screen and (max-width: 640px) {
   .footerContainer {
     flex-direction: column;

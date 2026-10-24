@@ -186,3 +186,10 @@
     grid-template-columns: 1fr;
   }
 }
+.socialIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+}

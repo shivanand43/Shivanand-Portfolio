@@ -40,7 +40,9 @@ export default function AdminLoginForm({ onLoginSuccess }) {
     <div className={styles.loginContainer}>
       <div className={styles.header}>
         <span className={styles.badge}>
-          <Shield size={14} /> Security Gate
+ <img src="/security.png" alt="security" className={styles.socialIcon} />
+    Security Gate
+  
         </span>
         <h2 className={styles.title}>Admin Access</h2>
         <p className={styles.subtitle}>

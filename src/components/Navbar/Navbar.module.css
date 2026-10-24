@@ -188,3 +188,10 @@
     padding: 0.55rem 0.75rem;
   }
 }
+.socialIcon {
+  width: 29px;
+  height: 29px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+}

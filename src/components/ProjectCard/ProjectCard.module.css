@@ -119,3 +119,93 @@
 .iconBtn:hover {
   color: var(--text-primary);
 }
+.socialIcon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+}
+/* Container: clips whatever moves outside the card boundaries */
+.trainTrack {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0.6rem 0;
+  margin: 0.85rem 0;
+  /* Soft fade at the edges as the train enters and departs */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+/* The complete train: Engine + all Carriages */
+.trainUnit {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: max-content;
+  white-space: nowrap;
+  /* Runs the train smoothly from left to right */
+  animation: trainDriveAcross 18s linear infinite;
+}
+
+/* Pause the train on hover so users can easily read or click tags */
+.trainTrack:hover .trainUnit {
+  animation-play-state: paused;
+}
+
+@keyframes trainDriveAcross {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw); 
+  }
+}
+
+.trainEngine {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trainGif {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.techChip {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(30, 41, 59, 0.9);
+  color: var(--text-primary, #f8fafc);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  user-select: none;
+}
+
+.techChip:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-primary, #38bdf8);
+}

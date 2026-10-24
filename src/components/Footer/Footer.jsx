@@ -19,28 +19,34 @@ export default function Footer() {
         </div>
 
         <div className={styles.socialRow}>
-          <a
-            href={profile.socials.github}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.socialLink}
-          >
-            <Code size={16} /> GitHub
-          </a>
-          <a
-            href={profile.socials.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.socialLink}
-          >
-            <Briefcase size={16} /> LinkedIn
-          </a>
-          <a href={`mailto:${profile.email}`} className={styles.socialLink}>
-            <Mail size={16} /> Email
-          </a>
-          <a href={`tel:${profile.phone}`} className={styles.socialLink}>
-            <Phone size={16} /> Call
-          </a>
+         <a
+    href={profile.socials.github}
+    target="_blank"
+    rel="noreferrer"
+    className={styles.socialLink}
+  >
+    <img src="/github.png" alt="GitHub" className={styles.socialIcon} />
+    GitHub
+  </a>
+
+  <a
+    href={profile.socials.linkedin}
+    target="_blank"
+    rel="noreferrer"
+    className={styles.socialLink}
+  >
+    <img src="/linkedin.png" alt="LinkedIn" className={styles.socialIcon} />
+    LinkedIn
+  </a>
+           <a href={`mailto:${profile.email}`} className={styles.socialLink}>
+    <img src="/email.gif" alt="Email" className={styles.socialIcon} />
+    Email
+  </a>
+
+  <a href={`tel:${profile.phone}`} className={styles.socialLink}>
+    <img src="/phone.gif" alt="Call" className={styles.socialIcon} />
+    Call
+  </a>
         </div>
       </div>
     </footer>

@@ -86,8 +86,8 @@ export default function Navbar() {
             className={styles.adminIconLink}
             onClick={closeMenu}
           >
-            <Shield size={17} />
-          </NavLink>
+<img src="/admin.png" alt="admin" className={styles.socialIcon} />
+            </NavLink>
 
           <button
             type="button"
