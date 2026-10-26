@@ -1,17 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Briefcase, GraduationCap, MapPin, Mail, Phone } from 'lucide-react';
 import { useSiteContent } from '../../context/SiteContentContext';
 import PageBack from '../../components/PageBack/PageBack';
 import SkillsShowcase from '../../components/SkillsShowcase/SkillsShowcase';
 import styles from './About.module.css';
+import profileImage from '../../assets/ShivanandImage.png';
 
 export default function About() {
   const { content, profile } = useSiteContent();
+  const [imgError, setImgError] = useState(false);
 
   return (
     <div className={styles.aboutPage}>
-      <div>
+      {/* 1. PageBack sits at the top */}
+      <div className={styles.backButtonWrapper}>
         <PageBack />
+      </div>
+
+      {/* 2. Intro Section: Side-by-side on desktop, Image-first then Card on mobile */}
+      <div className={styles.introSection}>
+        {/* <div className={styles.heroVisual}> */}
+          <div className={styles.floatingFrame}>
+            <div className={styles.glowRing} />
+            <div className={styles.avatarContainer}>
+              {!imgError ? (
+                <img
+                  src={profileImage}
+                  alt={profile.name}
+                  className={styles.profileImg}
+                  onError={() => setImgError(true)}
+                />
+              ) : (
+                <div className={styles.avatarFallback}>
+                  <span className={styles.initials}>SP</span>
+                </div>
+              )}
+            </div>
+          </div>
+        {/* </div> */}
+
         <div className={styles.introCard}>
           <h1 className={styles.pageTitle}>{content.aboutHeading}</h1>
           <p className={styles.summaryText}>{profile.summary}</p>

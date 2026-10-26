@@ -37,10 +37,12 @@ export default function ProjectCard({project}) {
                                 {tech}
                             </span>
                         ))}
+
                         <span className={styles.trainEngine}>
                             <img src="/train.gif" alt="Train Engine" className={styles.trainGif} />
                         </span>
                     </div>
+                    
                 </div>
 
                 <div className={styles.actionsRow}>
@@ -71,8 +73,8 @@ export default function ProjectCard({project}) {
                                 title="Live Demo"
                             >
                                 <ExternalLink size={17} />
-                            </a>
-                        )}
+                                </a>
+                            )}
                     </div>
                 </div>
             </div>

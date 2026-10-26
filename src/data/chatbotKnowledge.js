@@ -43,7 +43,7 @@ export function getSmartChatbotResponse(queryText, profile, projects) {
     q.includes('node')
   ) {
     return {
-      text: `⚛️ Technical Arsenal:
+      text: `⚛️ Core Technical Skills:
 
 💻 Frontend: React.js, Next.js, Angular, TypeScript, Tailwind CSS, PrimeNG.
 🔄 State Management: Redux Toolkit, Zustand, Context API.

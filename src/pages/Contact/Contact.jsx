@@ -47,9 +47,12 @@ export default function Contact() {
 
   return (
     <div className={styles.contactPage}>
-      <PageBack />
+      <div>
+              <PageBack />
 
+      </div>
       <div className={styles.contactGrid}>
+        
         <div className={styles.infoCard}>
           <h1 className={styles.heading}>{content.contactHeading}</h1>
           <p className={styles.subtext}>{content.contactSubtext}</p>

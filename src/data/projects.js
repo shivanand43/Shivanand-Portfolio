@@ -70,7 +70,7 @@ export const projectsData = [
       'Architected a modern tech-enabled educational portal focused on speed, accessibility, and conversion. Achieved 95+ Google Lighthouse scores across performance and SEO, and integrated automated EmailJS lead pipelines to eliminate backend maintenance overhead.',
     techStack: ['React 18', 'TypeScript', 'Tailwind CSS', 'EmailJS', 'Google Lighthouse'],
     metrics: ['95+ Lighthouse Performance & SEO', 'Automated EmailJS Lead Pipeline', 'Mobile-First UI'],
-    liveUrl: '',
+    liveUrl: 'https://www.v18premiumtuition.com/',
     githubUrl: 'https://github.com/shivanand43',
     featured: false,
   },

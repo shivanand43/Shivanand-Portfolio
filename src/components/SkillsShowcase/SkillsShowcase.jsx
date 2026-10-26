@@ -1,45 +1,154 @@
-import React from 'react';
-import { Code2, Layers, Cpu, Smartphone, Database, Gauge } from 'lucide-react';
-import { useSiteContent } from '../../context/SiteContentContext';
+import React, { useRef } from 'react';
+import { 
+  Code2, 
+  Layers, 
+  Smartphone, 
+  Server, 
+  Database, 
+  Wrench 
+} from 'lucide-react';
 import styles from './SkillsShowcase.module.css';
 
-export default function SkillsShowcase() {
-  const { profile } = useSiteContent();
-  const { skills } = profile;
+const skillCategories = [
+  {
+    title: 'Frontend Engineering',
+    icon: <Code2 size={20} />,
+    skills: [
+      'React.js',
+      'Next.js',
+      'Angular',
+      'TypeScript',
+      'JavaScript (ES6+)',
+      'HTML5',
+      'CSS3 / CSS Modules',
+      'Tailwind CSS',
+      'PrimeNG',
+      'Responsive Design',
+    ],
+  },
+  {
+    title: 'State Management',
+    icon: <Layers size={20} />,
+    skills: [
+      'Redux Toolkit',
+      'Zustand',
+      'Context API',
+      'RxJS',
+    ],
+  },
+  {
+    title: 'Mobile App Development',
+    icon: <Smartphone size={20} />,
+    skills: [
+      'React Native',
+      'Ionic',
+      'Capacitor',
+      'Expo',
+      'Expo Router',
+    ],
+  },
+  {
+    title: 'Backend & APIs',
+    icon: <Server size={20} />,
+    skills: [
+      'Node.js',
+      'Express.js',
+      'REST APIs',
+      'JWT Authentication',
+      'Serverless Functions',
+    ],
+  },
+  {
+    title: 'Databases & Storage',
+    icon: <Database size={20} />,
+    skills: [
+      'MongoDB',
+      'Vercel KV (Redis)',
+      'SQL / PostgreSQL',
+      'LocalStorage Cache',
+    ],
+  },
+  {
+    title: 'Tools & Workflows',
+    icon: <Wrench size={20} />,
+    skills: [
+      'Git & GitHub',
+      'Vite',
+      'Postman',
+      'VS Code',
+      'PowerShell',
+    ],
+  },
+];
 
-  const categories = [
-    { title: 'Frontend Engineering', icon: <Code2 size={18} />, items: skills.frontend },
-    { title: 'State Management', icon: <Layers size={18} />, items: skills.stateManagement },
-    { title: 'Mobile App Development', icon: <Smartphone size={18} />, items: skills.mobile },
-    { title: 'Backend, Cloud & AI', icon: <Database size={18} />, items: skills.backendCloudAi },
-    { title: 'API & Authentication', icon: <Cpu size={18} />, items: skills.apiIntegration },
-    { title: 'Performance & DevOps', icon: <Gauge size={18} />, items: skills.performanceTools },
-  ];
+function MagneticCard({ category }) {
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const card = cardRef.current;
+    const rect = card.getBoundingClientRect();
+    
+    // Position of cursor inside the card
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Set cursor variables for the dynamic spotlight flare
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+
+    // Calculate 3D tilt angles (-10deg to +10deg)
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -9;
+    const rotateY = ((x - centerX) / centerX) * 9;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    const card = cardRef.current;
+    // Smooth reset back to normal flat orientation
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+  };
 
   return (
-    <section className={styles.skillsSection}>
-      <div className={styles.headerRow}>
-        <h2 className={styles.sectionTitle}>Technical Arsenal</h2>
-        <p className={styles.sectionSubtitle}>
-          Production-tested technologies across Healthcare, Real Estate, Mobile & AI
+    <div
+      ref={cardRef}
+      className={styles.card}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className={styles.cardHeader}>
+        <span className={styles.categoryIcon}>{category.icon}</span>
+        <h3 className={styles.categoryTitle}>{category.title}</h3>
+      </div>
+
+      <div className={styles.pillList}>
+        {category.skills.map((skill) => (
+          <span key={skill} className={styles.pill}>
+            {skill}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function SkillsShowcase() {
+  return (
+    <section className={styles.section} id="skills">
+      <div className={styles.header}>
+        <h2 className={styles.title}>Core Technical Skills</h2>
+        <p className={styles.subtitle}>
+          Production-tested technologies across Healthcare, Real Estate, Mobile &amp; AI
         </p>
       </div>
 
       <div className={styles.grid}>
-        {categories.map((cat) => (
-          <div key={cat.title} className={styles.categoryCard}>
-            <h3 className={styles.categoryTitle}>
-              {cat.icon}
-              <span>{cat.title}</span>
-            </h3>
-            <div className={styles.tagList}>
-              {cat.items.map((skill) => (
-                <span key={skill} className={styles.skillTag}>
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
+        {skillCategories.map((cat) => (
+          <MagneticCard key={cat.title} category={cat} />
         ))}
       </div>
     </section>

@@ -8,6 +8,7 @@ import SkillsShowcase from '../../components/SkillsShowcase/SkillsShowcase';
 import styles from './Home.module.css';
 import profileImage from '../../assets/ShivanandImage.png';
 import PortfolioRating from '../../components/PortfolioRating/PortfolioRating';
+import CountUp from '../../components/CountUp';
 export default function Home() {
   const { content, profile, projects } = useSiteContent();
   const [imgError, setImgError] = useState(false);
@@ -16,54 +17,19 @@ export default function Home() {
   const featuredProjects = projects.filter((p) => p.featured).slice(0, 4);
 
   const stats = [
-    { value: profile.experienceYears, label: 'Production Experience' },
-    { value: '6+', label: 'Enterprise & AI Projects' },
-    { value: '95+', label: 'Lighthouse Performance' },
-    { value: '30%+', label: 'Dev Cycle Optimization' },
+    { target: 1.5, decimals: 1, suffix: '+ Years', label: 'Production Experience' },
+    { target: 6, decimals: 0, suffix: '+', label: 'Enterprise & AI Projects' },
+    { target: 95, decimals: 0, suffix: '+', label: 'Lighthouse Performance' },
+    { target: 30, decimals: 0, suffix: '%+', label: 'Dev Cycle Optimization' },
   ];
 
   return (
     <div className={styles.homeContainer}>
-      {/* Hero Section */}
+     {/* Hero Section */}
       <section className={styles.heroSection}>
-        <div className={styles.heroContent}>
-          <div className={styles.statusBadge}>
-            <span className={styles.pulseDot} />
-            <span>{content.heroBadge}</span>
-          </div>
-
-          <h1 className={styles.heroTitle}>
-            Hi, I&apos;m <span className={styles.gradientText}>{profile.name}</span>
-          </h1>
-
-          <h2 className={styles.heroSubtitle}>
-            {profile.role} • React, Next.js, Angular &amp; React Native
-          </h2>
-
-          <p className={styles.heroDescription}>{profile.summary}</p>
-
-          <div className={styles.ctaGroup}>
-            <Link to="/projects" className={styles.primaryBtn}>
-              <Sparkles size={18} />
-              <span>Explore Projects</span>
-            </Link>
-
-            <a
-              href={profile.resumeUrl}
-              download="Shivanand_Patil_Resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className={styles.secondaryBtn}
-            >
-              <Download size={18} />
-              <span>Download Resume</span>
-            </a>
-
-            <Link to="/contact" className={styles.secondaryBtn}>
-              <Mail size={18} />
-              <span>Contact Me</span>
-            </Link>
-          </div>
+        <div className={styles.statusBadge}>
+          <span className={styles.pulseDot} />
+          <span>{content.heroBadge}</span>
         </div>
 
         {/* Floating Animated Profile Image */}
@@ -90,18 +56,58 @@ export default function Home() {
             <div className={styles.orbitBadgeBottom}>🤖 Node.js • Gemini AI</div>
           </div>
         </div>
-      </section>
 
-      {/* Metrics Bar */}
+        <div className={styles.heroTextGroup}>
+          <h1 className={styles.heroTitle}>
+            Hi, I&apos;m <span className={styles.gradientText}>{profile.name}</span>
+          </h1>
+
+          <h2 className={styles.heroSubtitle}>
+            {profile.role} • React, Next.js, Angular &amp; React Native
+          </h2>
+
+          <p className={styles.heroDescription}>{profile.summary}</p>
+        </div>
+
+        <div className={styles.ctaGroup}>
+          <Link to="/projects" className={styles.primaryBtn}>
+            <Sparkles size={18} />
+            <span>Explore Projects</span>
+          </Link>
+
+          <a
+            href={profile.resumeUrl}
+            download="Shivanand_Patil_Resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.secondaryBtn}
+          >
+            <Download size={18} />
+            <span>Download Resume</span>
+          </a>
+
+          <Link to="/contact" className={styles.secondaryBtn}>
+            <Mail size={18} />
+            <span>Contact Me</span>
+          </Link>
+        </div>
+      </section>
+{/* Animated Metrics Bar */}
       <section className={styles.statsGrid}>
         {stats.map((item) => (
           <div key={item.label} className={styles.statCard}>
-            <div className={styles.statValue}>{item.value}</div>
+            <div className={styles.statValue}>
+              <CountUp
+                target={item.target}
+                decimals={item.decimals}
+                suffix={item.suffix}
+                duration={2000}
+              />
+            </div>
             <div className={styles.statLabel}>{item.label}</div>
           </div>
         ))}
       </section>
-
       {/* Featured Projects */}
       <section
         ref={projectsRef}
