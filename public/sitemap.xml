@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://your-portfolio-domain.vercel.app/</loc>
+    <loc>https://shivanand-portfolio-zeta.vercel.app/</loc>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://your-portfolio-domain.vercel.app/about</loc>
+    <loc>https://shivanand-portfolio-zeta.vercel.app/about</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://your-portfolio-domain.vercel.app/projects</loc>
+    <loc>https://shivanand-portfolio-zeta.vercel.app/projects</loc>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://your-portfolio-domain.vercel.app/contact</loc>
+    <loc>https://shivanand-portfolio-zeta.vercel.app/contact</loc>
     <priority>0.80</priority>
   </url>
 </urlset>

@@ -8,7 +8,7 @@ import Projects from './pages/Projects/Projects';
 import ProjectDetail from './pages/ProjectDetail/ProjectDetail';
 import Contact from './pages/Contact/Contact';
 import styles from './App.module.css';
-// import VisitorTracker from './components/VisitorTracker/VisitorTracker';
+import VisitorTracker from './components/VisitorTracker/VisitorTracker';
 import Chatbot from './components/Chatbot/Chatbot';
 import Admin from './pages/Admin/Admin';
 export default function App() {
@@ -25,7 +25,7 @@ export default function App() {
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
-      {/* <VisitorTracker /> */}
+      <VisitorTracker />
       <Chatbot />
       <Footer />
     </div>
