@@ -205,6 +205,35 @@ async function buildLocationString() {
   return `📍 Location: Could not be determined (GPS failed: ${gpsError} + IP lookup failed)`;
 }
 
+/** Check whether the tracker should be bypassed (Owner/Admin or Returning Visitor) */
+function shouldBypassTracker(pathname = '') {
+  try {
+    // 1. Check URL flag (?admin=true) and permanently mark this browser as Owner
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('admin') === 'true') {
+      localStorage.setItem('shivanand_is_owner', 'true');
+      return true;
+    }
+
+    // 2. Skip if Owner flag is set, if logged into /admin, or currently visiting /admin
+    if (
+      localStorage.getItem('shivanand_is_owner') === 'true' ||
+      Boolean(sessionStorage.getItem('shivanand_admin_token')) ||
+      pathname.startsWith('/admin')
+    ) {
+      return true;
+    }
+
+    // 3. Skip if this visitor has already submitted or skipped previously (persists across sessions)
+    if (localStorage.getItem('visitor_name')) {
+      return true;
+    }
+  } catch {
+    // Ignore storage access errors in strict privacy browsers
+  }
+  return false;
+}
+
 export default function VisitorTracker() {
   const { content, profile } = useSiteContent();
   const location = useLocation();
@@ -225,19 +254,27 @@ export default function VisitorTracker() {
   const { serviceId, templateId, publicKey } = getEmailJsConfig(CONTACT);
 
   const [name, setName] = useState('');
-  const [showModal, setShowModal] = useState(
-    () => !sessionStorage.getItem('visitor_name')
+  const [showModal, setShowModal] = useState(() =>
+    !shouldBypassTracker(window.location.pathname)
   );
   const [submitting, setSubmitting] = useState(false);
 
+  // Re-evaluate bypass if route changes (e.g., navigating directly to /admin)
   useEffect(() => {
+    if (shouldBypassTracker(location.pathname)) {
+      setShowModal(false);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!showModal) return;
     if (navigator.permissions && navigator.permissions.query) {
       navigator.permissions.query({ name: 'geolocation' }).then((p) => {
         setGeoPermission(p.state);
         p.onchange = () => setGeoPermission(p.state);
       });
     }
-  }, []);
+  }, [showModal]);
 
   useEffect(() => {
     if (showModal && inputRef.current) {
@@ -263,7 +300,13 @@ export default function VisitorTracker() {
   const handleSubmit = async (isSkip = false) => {
     if (submitting) return;
     const visitorName = isSkip ? 'Anonymous' : name.trim() || 'Anonymous';
-    sessionStorage.setItem('visitor_name', visitorName);
+
+    // Save permanently in localStorage so returning visitors are never asked again
+    try {
+      localStorage.setItem('visitor_name', visitorName);
+    } catch {
+      // Ignore storage error
+    }
 
     // Save visitor log locally for Admin Dashboard as well
     try {
@@ -351,13 +394,13 @@ export default function VisitorTracker() {
       aria-label="Welcome modal"
     >
       <div className={styles.vtModal}>
-        {/* Gold header */}
+        {/* Cyber-Blue header */}
         <div className={styles.vtHeader}>
           <span className={styles.vtHeaderIcon}>👋</span>
           <span className={styles.vtHeaderTitle}>Welcome!</span>
         </div>
 
-        {/* White body */}
+        {/* Dark-Glass body */}
         <div className={styles.vtBody}>
           <p className={styles.vtGreeting}>Hi there!</p>
           <p className={styles.vtDesc}>

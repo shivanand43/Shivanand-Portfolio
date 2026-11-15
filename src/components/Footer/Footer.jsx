@@ -35,16 +35,16 @@ export default function Footer() {
     rel="noreferrer"
     className={styles.socialLink}
   >
-    <img src="/linkedin.png" alt="LinkedIn" className={styles.socialIcon} />
+    <img src="/linkedin.png"  alt="LinkedIn" className={styles.socialIcon} />
     LinkedIn
   </a>
            <a href={`mailto:${profile.email}`} className={styles.socialLink}>
-    <img src="/email.gif" alt="Email" className={styles.socialIcon} />
+    <img src="/email.gif" alt="Email" className={styles.socialIconEmail} />
     Email
   </a>
 
   <a href={`tel:${profile.phone}`} className={styles.socialLink}>
-    <img src="/phone.gif" alt="Call" className={styles.socialIcon} />
+    <img src="/phone.gif" alt="Call" className={styles.socialIconCall} />
     Call
   </a>
         </div>
