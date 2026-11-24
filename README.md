@@ -3,7 +3,6 @@
 A high-performance, interactive full-stack personal portfolio built with **React (Vite)** and **Node.js Serverless APIs**. Beyond showcasing projects and skills, this application acts as an active lead-generation and recruiter engagement engine—featuring real-time visitor tracking, an AI-assisted recruiter chatbot, EmailJS alerts, JWT-secured admin analytics, and one-click Excel (.xlsx) reporting.
 
 ---
-
 ## 📋 Table of Contents
 1. [Project Overview](#-project-overview)
 2. [Tech Stack](#-tech-stack)
@@ -37,7 +36,6 @@ Most developer portfolios are static digital resumes. This project is engineered
 | **Data Export** | `xlsx` (SheetJS) for multi-sheet `.xlsx` generation |
 
 ---
-
 ## 📂 Project Folder Structure
 
 Every file and folder in this project has a single, clear responsibility:

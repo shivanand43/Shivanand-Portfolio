@@ -6,7 +6,6 @@ import {
 } from '../utils/siteContentStorage';
 
 const SiteContentContext = createContext(null);
-
 export function SiteContentProvider({ children }) {
   const [content, setContent] = useState(() => loadSiteContent());
 
